@@ -1,0 +1,94 @@
+body {
+    background-color: rgb(169, 169, 169);
+}
+
+.container {
+    min-height: 100vh;
+    display: block;
+    overflow-y: auto;
+    position: relative;
+    border: 3px solid rgb(75, 74, 74);
+    margin: auto;
+    text-align: center;
+    width: 30%;
+    background-color: whitesmoke;
+  }
+
+.center {
+    margin: 0;
+    position: absolute;
+    left:0; right:0;
+    top:0; bottom:0;
+    top: 50%;
+    margin:auto;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    text-align: center;
+}
+
+.center-register {
+    margin: 0;
+    position: absolute;
+    left:0; right:0;
+    top:0; bottom:0;
+    top: 45%;
+    margin:auto;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    text-align: center;
+}
+
+#register-text {
+    margin: auto;
+    margin-top: 50px;
+    width:80%;
+}
+
+#remember {
+    margin: 50px 10px 0px 0px;
+    transform: scale(2);
+}
+
+#submit {
+    margin-top: 20px;
+    padding: 10px 20px 10px 20px;
+    font-size: 20px;
+    border-radius: 10px;
+}
+
+label {
+    font-size: large;
+    font-weight: bold;
+}
+
+.form-group {
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+#login-title {
+    margin-top: 15%;
+}
+
+.box {
+    position: relative;
+}
+
+.register-error {
+    position: absolute;
+    right: 0;
+    color: red;
+    font-weight: bold;
+}
+
+.input-error {
+    position: absolute;
+    right: 0;
+    color: red;
+    font-weight: bold;
+}
+
+.login-error {
+    color: red;
+    font-weight: bold;
+}
