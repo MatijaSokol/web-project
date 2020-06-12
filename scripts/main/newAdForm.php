@@ -12,7 +12,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../styles/style.css">
+    <link rel="stylesheet" href="../../styles/styleNewAd.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
@@ -20,6 +20,42 @@
 </head>
 <body>
     <main>
+        <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <form class="form-inline my-2 my-lg-0 invisible" method="post">
+                    <input id="query" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" id="search">Search</button>
+                </form>
+                <ul class="navbar-nav mr-auto">
+                </ul>
+                <ul class="nav navbar-nav navbar-center mr-auto">
+                    <li class="nav-item">
+                        <span id="welcome-message">Welcome <?php echo $_SESSION["username"]; ?></span>
+                    </li>
+                </ul>
+                <div class="form-inline my-2 my-lg-0">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link text-warning" href="main.php">Home</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link text-warning" href="myAds.php">My ads</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link text-warning" href="newAdForm.php">New ad</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link text-warning" href="logout.php">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
         <article class="container">
             <h2 id="login-title">New ad</h2>
             <span id="errorMessage" class="login-error"></span>
@@ -75,7 +111,7 @@
                     contentType: false,
                     processData: false,
                     success: function(imagePath){
-                        if (imagePath != 0) {
+                        if (imagePath !== 0) {
                             console.log(imagePath);
                             uploadInDatabase(imagePath);
                         }
@@ -103,7 +139,7 @@
                     data: { ad: adJSON },
 
                     success: function(result) {
-                        if (result == "success") {
+                        if (result === "success") {
                             window.location.href = "main.php";
                         }
                     }

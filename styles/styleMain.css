@@ -4,6 +4,23 @@
     transform: translatex(-50%);
 }
 
-.no-hover {
-    pointer-events: none;
+.nav-item a:hover {
+    color: red;
+    cursor: pointer;
+}
+
+body {
+    background-color: rgb(169, 169, 169);
+}
+
+.card-body {
+    background: #a8b6b2;
+}
+
+#welcome-message {
+    color: white;
+}
+
+li {
+    color: white;
 }

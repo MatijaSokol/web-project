@@ -6,6 +6,10 @@ body {
     color: white;
 }
 
+.invisible {
+    visibility: hidden;
+}
+
 .container {
     min-height: 92vh;
     display: block;
@@ -16,18 +20,6 @@ body {
     text-align: center;
     width: 30%;
     background-color: whitesmoke;
-  }
-
-.center-text {
-    margin: 0;
-    position: absolute;
-    left:0; right:0;
-    top:0; bottom:0;
-    top: 50%;
-    margin:auto;
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
-    text-align: center;
 }
 
 .center {

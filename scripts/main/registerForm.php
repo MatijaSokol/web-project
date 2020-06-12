@@ -12,6 +12,26 @@
 </head>
 <body>
     <main>
+        <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                </ul>
+                <div class="form-inline my-2 my-lg-0">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link text-warning" href="main.php">Home</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link text-warning" href="index.php">Login</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
         <article class="container">
             <h2 id="login-title">Create account</h2>
             <div class="center-register">
@@ -53,7 +73,6 @@
                     </div>
                 </form>
                 <button id="submit" class="btn btn-primary" type="submit">Register</button>
-                <h3 id="register-text">Already have an account? <a href="index.php">Login here!</a></h3>
             </div>
         </article>
     </main>

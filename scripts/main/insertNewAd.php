@@ -18,7 +18,7 @@ $productDbHelper = ProductDbHelper::getInstance($mypdo);
 
 $product = new Product($name, $description, $price, $owner, $image);
 
-$valid = $productDbHelper->insertProduct($product);
+$valid = $productDbHelper->insertAd($product);
 
 if ($valid) {
     echo "success";
