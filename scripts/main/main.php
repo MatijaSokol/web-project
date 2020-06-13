@@ -96,7 +96,7 @@
                     $element .= '<div class="card-body">';
                     $element .= '<div class="text-center"> <h5 class="card-title">' . $products[$i]->name . '</h5> </div>';
                     $element .= '<p class="card-text text-center">' . $products[$i]->price . ' kn</p>';
-                    $element .= '<div class="text-center"> <a href="#" onclick="location.href=\'adDetails.php?id=' . $products[$i]->id . '\'" class="btn btn-primary">Show more</a> </div> </div> </div> </div>';
+                    $element .= '<div class="text-center"> <button id="showMore" onclick="location.href=\'adDetails.php?id=' . $products[$i]->id . '\'" class="btn btn-primary">Show more</button> </div> </div> </div> </div>';
 
                     if ($i % 3 == 2) {
                         $element .= '</div> <br>';
@@ -123,6 +123,7 @@
                         data: { query: query },
 
                         success: function(resultJSON) {
+                            console.log(resultJSON);
                             setQueriedElements(Array.from(JSON.parse(resultJSON)));
                         }
                     });
@@ -130,7 +131,9 @@
             });
 
             function setQueriedElements(elements) {
-                if (elements.length !== 0) {
+                if (elements.length === 0) {
+                    alert("No result found.");
+                } else {
                     let element = '';
                     $(".container").empty();
 
@@ -145,7 +148,7 @@
                         element += '<div class="card-body">';
                         element += '<div class="text-center"> <h5 class="card-title">' + elements[i].name + '</h5> </div>';
                         element += '<p class="card-text text-center">' + elements[i].price + ' kn</p>';
-                        element += '<div class="text-center"> <a href="#" class="btn btn-primary">See more</a> </div> </div> </div> </div>';
+                        element += '<div class="text-center"> <button id="showMore" onclick="location.href=\'adDetails.php?id=' + elements[i].id.toString() + '\'" class="btn btn-primary">See more</button> </div> </div> </div> </div>';
 
                         if (i % 3 === 2) {
                             element += '</div> <br>';

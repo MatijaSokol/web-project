@@ -19,5 +19,3 @@
             $this->email = $email;
         }
     }
-
-?>

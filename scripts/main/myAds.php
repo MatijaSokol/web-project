@@ -128,7 +128,9 @@
             });
 
             function setQueriedElements(elements) {
-                if (elements.length !== 0) {
+                if (elements.length === 0) {
+                    alert("No result found.");
+                } else {
                     let element = '';
                     $(".container").empty();
 
@@ -143,7 +145,7 @@
                         element += '<div class="card-body">';
                         element += '<div class="text-center"> <h5 class="card-title">' + elements[i].name + '</h5> </div>';
                         element += '<p class="card-text text-center">' + elements[i].price + ' kn</p>';
-                        element += '<div class="text-center"> <a href="#" class="btn btn-primary">See more</a> </div> </div> </div> </div>';
+                        element += '<div class="text-center"> <button id="showMore" onclick="location.href=\'adDetails.php?id=' + elements[i].id.toString() + '\'" class="btn btn-primary">See more</button> <button id="showMore" onclick="location.href=\'deleteAd.php?id=' + elements[i].id.toString() + '\'" class="btn btn-danger">Delete</button> </div> </div> </div> </div>';
 
                         if (i % 3 === 2) {
                             element += '</div> <br>';

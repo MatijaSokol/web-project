@@ -4,23 +4,23 @@ $filename = $_FILES['file']['name'];
 
 /* Location */
 $location = "../../img/" . $filename;
-$uploadOk = 1;
 $imageFileType = pathinfo($location,PATHINFO_EXTENSION);
 
 /* Valid Extensions */
 $valid_extensions = array("jpg","jpeg","png");
 /* Check file extension */
-if( !in_array(strtolower($imageFileType),$valid_extensions) ) {
-   $uploadOk = 0;
+if (!in_array(strtolower($imageFileType),$valid_extensions)) {
+   echo 0;
+   die();
 }
 
-if($uploadOk == 0){
-   echo 0;
-}else{
-   /* Upload file */
-   if(move_uploaded_file($_FILES['file']['tmp_name'], $location)){
-      echo $location;
-   }else{
-      echo 0;
-   }
+if (file_exists($location)) {
+    echo 1;
+    die();
+}
+
+if (move_uploaded_file($_FILES['file']['tmp_name'], $location)) {
+    echo $location;
+} else {
+    echo 2;
 }

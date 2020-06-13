@@ -81,7 +81,7 @@
                     <br>
                     <div class="box">
                         <label for="fileToUpload" class="labelCenter">Image: </label>
-                        <span id="priceError" class="input-error"></span>
+                        <span id="imageError" class="input-error"></span>
                     </div>
                     <input id="file" class="form-control-file btn btn-info" name="file" type="file">
                     <br> 
@@ -93,6 +93,13 @@
     </main>
 
     <script>
+        function setSpanMissingText() {
+            $("#name").val() === "" ? $("#nameError").text("Missing") : $("#nameError").text("");
+            $("#description").val() === "" ? $("#descriptionError").text("Missing") : $("#descriptionError").text("");
+            $("#price").val() === "" ? $("#priceError").text("Missing") : $("#priceError").text("");
+            $("#file").get(0).files.length === 0 ? $("#imageError").text("Missing") : $("#imageError").text("");
+        }
+
         $(document).ready(function() {
             const owner = '<?php echo $_SESSION['username']; ?>';
 
@@ -100,8 +107,44 @@
                 e.preventDefault();
                 e.stopPropagation();
 
-                var fd = new FormData();
-                var files = $('#file')[0].files[0];
+                const name = $("#name").val();
+                const description = $("#description").val();
+                const price = $("#price").val();
+                const image = $("#file").get(0).files;
+
+                if (name === "" || description === "" || price === "" || image.length === 0) {
+                    setSpanMissingText();
+                    return;
+                }
+
+                const ad = {
+                    name: name,
+                    description: description,
+                    price: price
+                }
+
+                const adJSON = JSON.stringify(ad);
+
+                $.ajax({
+                    method: "POST",
+                    url: "../helpers/validateNewAdInput.php",
+                    data: { ad: adJSON },
+
+                    success: function(result) {
+                        setSpanMissingText();
+                        if (result === "Success") {
+                            $("#errorMessage").text("");
+                            uploadImage();
+                        } else {
+                            $("#errorMessage").text("Invalid name, description or price. Try again!");
+                        }
+                    }
+                });
+            });
+
+            function uploadImage() {
+                const fd = new FormData();
+                const files = $('#file')[0].files[0];
                 fd.append('file', files);
 
                 $.ajax({
@@ -110,23 +153,31 @@
                     data: fd,
                     contentType: false,
                     processData: false,
-                    success: function(imagePath){
-                        if (imagePath !== 0) {
-                            console.log(imagePath);
-                            uploadInDatabase(imagePath);
+                    success: function(result){
+                        if (result.toString() === "0") {
+                            alert("Sorry, image format is invalid. Please select another.");
+                            setSpanMissingText();
+                        } else if (result.toString() === "1") {
+                            alert("Sorry, same image already exists. Please select another.");
+                            setSpanMissingText();
+                        } else if (result.toString() === "1") {
+                            alert("Something went wrong. Please try again.");
+                            setSpanMissingText();
+                        } else {
+                            uploadInDatabase(result);
                         }
                     },
                 });
-            });
+            }
 
             function uploadInDatabase(imagePath) {
                 const username = $("#name").val();
-                const password = $("#description").val();
+                const description = $("#description").val();
                 const price = $("#price").val();
 
                 const ad = {
                     name: username,
-                    description: password,
+                    description: description,
                     price: price,
                     owner: owner,
                     image: imagePath
