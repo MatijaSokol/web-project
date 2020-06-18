@@ -155,13 +155,13 @@
                     processData: false,
                     success: function(result){
                         if (result.toString() === "0") {
-                            alert("Sorry, image format is invalid. Please select another.");
+                            $("#errorMessage").text("Sorry, image format is invalid. Please select another.");
                             setSpanMissingText();
                         } else if (result.toString() === "1") {
-                            alert("Sorry, same image already exists. Please select another.");
+                            $("#errorMessage").text("Sorry, same image already exists. Please select another.");
                             setSpanMissingText();
                         } else if (result.toString() === "1") {
-                            alert("Something went wrong. Please try again.");
+                            $("#errorMessage").text("Something went wrong. Please try again.");
                             setSpanMissingText();
                         } else {
                             uploadInDatabase(result);

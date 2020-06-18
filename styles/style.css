@@ -1,5 +1,5 @@
 body {
-    background-color: rgb(169, 169, 169);
+    background: -webkit-linear-gradient(left, #3931af, #00c6ff);
 }
 
 #welcome-message {
