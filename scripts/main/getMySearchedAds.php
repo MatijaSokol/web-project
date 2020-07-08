@@ -11,6 +11,8 @@ $productDbHelper = ProductDbHelper::getInstance($myPdo);
 
 $products = $productDbHelper->findAllMySearchedAds($query, $username);
 
+$productDbHelper->closeConnection();
+
 echo json_encode($products);
 
 

@@ -18,6 +18,8 @@
     $userDbHelper = UserDbHelper::getInstance($mypdo);
     $exist = $userDbHelper->findUserByUsernameAndPassword($username, md5($password));
 
+    $userDbHelper->closeConnection();
+
     if (!$exist) {
         echo "Error - user does not exist";
     } else {

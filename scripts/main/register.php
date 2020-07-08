@@ -26,4 +26,6 @@
             echo "Error - failed to insert into database";
         }
     }
+
+    $userDbHelper->closeConnection();
 ?>

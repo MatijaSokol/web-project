@@ -13,6 +13,8 @@ $image = $ad->image;
 
 $valid = $productDbHelper->deleteAdById($id);
 
+$productDbHelper->closeConnection();
+
 if ($valid) {
     header("Location: myAds.php");
     unlink($image);

@@ -64,16 +64,7 @@
             if(isset($_COOKIE['username']) and isset($_COOKIE['password'])) {
                 $username = $_COOKIE['username'];
                 $password  = $_COOKIE['password'];
-    
-                function debug_to_console($data) {
-                    $output = $data;
-                    if (is_array($output))
-                        $output = implode(',', $output);
                 
-                    echo "<script>console.log('Debug Objects: " . $output . "' );</script>";
-                }
-                
-    
                 echo "
                     <script>
                         $('#username').val('$username');
@@ -129,7 +120,6 @@
                     data: { user: userJSON },
 
                     success: function(result) {
-                        console.log("validate result: " + result);
                         clearSpans();
                         if (result == "Success") {
                             $("#errorMessage").text("");
@@ -152,7 +142,6 @@
                         },
 
                         success: function(result) {
-                            console.log("login result: " + result);
                             if (result == "Success") {
                                 window.location.href = "main.php";
                             } else {

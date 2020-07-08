@@ -50,6 +50,11 @@
             return $valid;
         }
 
+        public function closeConnection() {
+            $db = null;
+            $data = null;
+        }
+
         public static function getInstance(MyPDO $db) {
             if (self::$instance == null) {
                 self::$instance = new ProductDbHelper($db);

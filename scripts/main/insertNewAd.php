@@ -20,6 +20,8 @@ $product = new Product($name, $description, $price, $owner, $image);
 
 $valid = $productDbHelper->insertAd($product);
 
+$productDbHelper->closeConnection();
+
 if ($valid) {
     echo "success";
 } else {

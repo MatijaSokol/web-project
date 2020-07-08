@@ -105,6 +105,8 @@
                     echo $element;
                     $element = '';
                 }
+
+                $productDbHelper->closeConnection();
             ?>
         </div>
     </main>

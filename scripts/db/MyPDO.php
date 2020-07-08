@@ -22,7 +22,7 @@
                 self::$instance = new self;
             }
             return self::$instance;
-            }
+        }
 
         // a proxy to native PDO methods
         public function __call($method, $args) {

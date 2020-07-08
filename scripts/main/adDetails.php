@@ -12,6 +12,9 @@ $userDbHelper = UserDbHelper::getInstance(MyPDO::getInstance());
 $ad = $productDbHelper->findAdById($id);
 $user = $userDbHelper->findUserByUsername($ad->owner);
 
+$productDbHelper->closeConnection();
+$userDbHelper->closeConnection();
+
 ?>
 
 <!DOCTYPE html>

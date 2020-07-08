@@ -10,6 +10,8 @@ $productDbHelper = ProductDbHelper::getInstance($myPdo);
 
 $products = $productDbHelper->findAllSearchedAds($query);
 
+$productDbHelper->closeConnection();
+
 echo json_encode($products);
 
 

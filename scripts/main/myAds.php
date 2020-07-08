@@ -96,6 +96,8 @@
                     $element = '';
                 }
 
+                $productDbHelper->closeConnection();
+
             ?>
 
         </div>
