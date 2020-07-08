@@ -121,20 +121,35 @@
                 if (query !== "") {
                     $.ajax({
                         method: "POST",
-                        url: "getSearchedAds.php",
+                        url: "../helpers/validateQueryInput.php",
                         data: { query: query },
 
-                        success: function(resultJSON) {
-                            console.log(resultJSON);
-                            setQueriedElements(Array.from(JSON.parse(resultJSON)));
+                        success: function(result) {
+                            if (result === "Success") {
+                                getSearchedAds(query);
+                            } else {
+                                alert("Invalid query!");
+                            }
                         }
                     });
                 }
             });
 
+            function getSearchedAds(query) {
+                $.ajax({
+                        method: "POST",
+                        url: "getSearchedAds.php",
+                        data: { query: query },
+
+                        success: function(resultJSON) {
+                            setQueriedElements(Array.from(JSON.parse(resultJSON)));
+                        }
+                    });
+            }
+
             function setQueriedElements(elements) {
                 if (elements.length === 0) {
-                    alert("No result found.");
+                    alert("No result found!");
                 } else {
                     let element = '';
                     $(".container").empty();
@@ -150,7 +165,7 @@
                         element += '<div class="card-body">';
                         element += '<div class="text-center"> <h5 class="card-title">' + elements[i].name + '</h5> </div>';
                         element += '<p class="card-text text-center">' + elements[i].price + ' kn</p>';
-                        element += '<div class="text-center"> <button id="showMore" onclick="location.href=\'adDetails.php?id=' + elements[i].id.toString() + '\'" class="btn btn-primary">See more</button> </div> </div> </div> </div>';
+                        element += '<div class="text-center"> <button id="showMore" onclick="location.href=\'adDetails.php?id=' + elements[i].id.toString() + '\'" class="btn btn-primary">Show more</button> </div> </div> </div> </div>';
 
                         if (i % 3 === 2) {
                             element += '</div> <br>';
