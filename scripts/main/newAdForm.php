@@ -160,7 +160,7 @@
                         } else if (result.toString() === "1") {
                             $("#errorMessage").text("Sorry, same image already exists. Please select another.");
                             setSpanMissingText();
-                        } else if (result.toString() === "1") {
+                        } else if (result.toString() === "2") {
                             $("#errorMessage").text("Something went wrong. Please try again.");
                             setSpanMissingText();
                         } else {

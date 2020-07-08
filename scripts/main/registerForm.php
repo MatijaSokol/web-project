@@ -142,9 +142,8 @@
                     data: { user: userJSON },
 
                     success: function(result) {
-                        console.log("result: " + result);
                         clearSpans();
-                        if (result == "Success") {
+                        if (result === "Success") {
                             register();
                         } else {
                             setSpanErrorText(result);
@@ -159,8 +158,7 @@
                         data: { user: userJSON },
 
                         success: function(result) {
-                            console.log(result);
-                            if (result == "Success") {
+                            if (result === "Success") {
                                 alert("User successfully registered!");
                                 window.location.href = "index.php";
                             } else {

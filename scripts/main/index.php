@@ -88,13 +88,11 @@
 
     <script>
         function setSpanMissingText() {
-            console.log("setmissing");
             $("#username").val() == "" ? $("#userNameLoginError").text("Missing") : $("#userNameLoginError").text("");
             $("#password").val() == "" ? $("#passwordLoginError").text("Missing") : $("#passwordLoginError").text("");
         }
 
         function clearSpans() {
-            console.log("clear spans");
             $("#userNameLoginError").text("");
             $("#passwordLoginError").text("");
         }
